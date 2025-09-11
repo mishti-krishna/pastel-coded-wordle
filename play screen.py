@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import random
 from datetime import date
+import tkinter.font as tkfont
 
 def center_window(window, width, height):
     screen_width = window.winfo_screenwidth()
@@ -15,14 +16,33 @@ def show_rules():
 
     rules.title("rules of the game")
 
-    Label(rules, text="how to play:", font=("andale mono", 50), fg="#6A5ACD", ).pack(pady=20)
-    Label(rules, text="guess the string in 5 tries.", font=("galvji", 20), fg="#6A5ACD", ).pack(pady=5)
-    Label(rules, text="1. each guess must be a valid 5-letter string.", font=("galvji", 20), fg="#6A5ACD", ).pack(pady=5)
-    Label(rules, text="2. the color of the tiles will change to show how close your guess was to the word.", font=("galvji", 20), fg="#6A5ACD", ).pack(pady=5)
+    Label(rules, text="how to play:",
+          font=("andale mono", 50), fg="#6A5ACD"
+          ).pack(fill="x", pady=20)
 
-    Label(rules, text="green letters indicate that the letter is in the word and in the correct spot.", font=("galvji", 20), fg="#C1E1C1", ).pack(pady=5)
-    Label(rules, text="yellow letters indicate that the letter is in the word but in the wrong spot.", font=("galvji", 20), fg="#FFFAA0", ).pack(pady=5)
-    Label(rules, text="red letters indicate that the letter is not in the word in any spot.", font=("galvji", 20), fg="#FAA0A0", ).pack(pady=5)
+    Label(rules, text="guess the string in 5 tries.",
+          font=("galvji", 20), fg="#6A5ACD"
+          ).pack(fill="x", pady=5)
+
+    Label(rules, text="1. each guess must be a valid 5-letter string.",
+          font=("galvji", 20), fg="#6A5ACD"
+          ).pack(fill="x", pady=5)
+
+    Label(rules, text="2. the color of the tiles will change to show how close your guess was to the word.",
+          font=("galvji", 20), fg="#6A5ACD"
+          ).pack(fill="x", pady=5)
+
+    Label(rules, text="green letters indicate that the letter is in the word and in the correct spot.",
+          font=("galvji", 20), fg="#2E8B57", bg="#C1E1C1"
+          ).pack(fill="x", pady=5, anchor="center")
+
+    Label(rules, text="yellow letters indicate that the letter is in the word but in the wrong spot.",
+          font=("galvji", 20), fg="#2E8B57", bg="#FFFAA0"
+          ).pack(fill="x", pady=5, anchor="center")
+
+    Label(rules, text="red letters indicate that the letter is not in the word in any spot.",
+          font=("galvji", 20), fg="#800000", bg="#FAA0A0"
+          ).pack(fill="x", pady=5, anchor="center")
 
     ok_button = Button(rules, text="OK", command=lambda: [rules.destroy(), playscreen()], font=("galvji", 20))
     ok_button.pack(pady=30)
@@ -191,8 +211,21 @@ def playscreen():
 
     entry1.focus()
 
+    def lock_row(start_index, end_index):
+        for i in range(start_index, end_index):
+            e = entries[i]
+            bg = e.cget("background")
+            fg = e.cget("foreground")
+
+            e.config(state="disabled", disabledbackground=bg, disabledforeground=fg)
+
     def show_message_box():
-        messagebox.showinfo(" ", "good job!")
+        messagebox.showinfo(" ", "good job!",)
+        answer = messagebox.askyesno(" ", "play another game?")
+        if answer:
+            frameworkm.destroy()
+        else:
+            frameworkm.destroy()
 
     def clicked(event, key):
         focused_entry = framework.focus_get()
@@ -211,39 +244,39 @@ def playscreen():
 
                     if word in valid_words:
                         if word[0] == req_word[0]:
-                            entries[current_index - 4].config(background="#C1E1C1")
+                            entries[current_index - 4].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[0] in req_word:
-                            entries[current_index - 4].config(background="#FFFAA0")
+                            entries[current_index - 4].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 4].config(background="#FAA0A0")
+                            entries[current_index - 4].config(background="#FAA0A0",foreground="#800000")
 
                         if word[1] == req_word[1]:
-                            entries[current_index - 3].config(background="#C1E1C1")
+                            entries[current_index - 3].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[1] in req_word:
-                            entries[current_index - 3].config(background="#FFFAA0")
+                            entries[current_index - 3].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 3].config(background="#FAA0A0")
+                            entries[current_index - 3].config(background="#FAA0A0",foreground="#800000")
 
                         if word[2] == req_word[2]:
-                            entries[current_index - 2].config(background="#C1E1C1")
+                            entries[current_index - 2].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[2] in req_word:
-                            entries[current_index - 2].config(background="#FFFAA0")
+                            entries[current_index - 2].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 2].config(background="#FAA0A0")
+                            entries[current_index - 2].config(background="#FAA0A0",foreground="#800000")
 
                         if word[3] == req_word[3]:
-                            entries[current_index - 1].config(background="#C1E1C1")
+                            entries[current_index - 1].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[3] in req_word:
-                            entries[current_index - 1].config(background="#FFFAA0")
+                            entries[current_index - 1].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 1].config(background="#FAA0A0")
+                            entries[current_index - 1].config(background="#FAA0A0",foreground="#800000")
 
                         if word[4] == req_word[4]:
-                            entries[current_index].config(background="#C1E1C1")
+                            entries[current_index].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[4] in req_word:
-                            entries[current_index].config(background="#FFFAA0")
+                            entries[current_index].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index].config(background="#FAA0A0")
+                            entries[current_index].config(background="#FAA0A0",foreground="#800000")
 
                         frameworkm.update_idletasks()
 
@@ -259,43 +292,45 @@ def playscreen():
                     else:
                         messagebox.showinfo(" ", "word not in list. try again.")
 
+                    lock_row(current_index - 4, current_index + 1)
+
                 if current_index == 9:
                     word = ''.join([entry.get() for entry in [entry6, entry7, entry8, entry9, entry10]])
                     if word in valid_words:
                         if word[0] == req_word[0]:
-                            entries[current_index - 4].config(background="#C1E1C1")
+                            entries[current_index - 4].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[0] in req_word:
-                            entries[current_index - 4].config(background="#FFFAA0")
+                            entries[current_index - 4].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 4].config(background="#FAA0A0")
+                            entries[current_index - 4].config(background="#FAA0A0",foreground="#800000")
 
                         if word[1] == req_word[1]:
-                            entries[current_index - 3].config(background="#C1E1C1")
+                            entries[current_index - 3].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[1] in req_word:
-                            entries[current_index - 3].config(background="#FFFAA0")
+                            entries[current_index - 3].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 3].config(background="#FAA0A0")
+                            entries[current_index - 3].config(background="#FAA0A0",foreground="#800000")
 
                         if word[2] == req_word[2]:
-                            entries[current_index - 2].config(background="#C1E1C1")
+                            entries[current_index - 2].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[2] in req_word:
-                            entries[current_index - 2].config(background="#FFFAA0")
+                            entries[current_index - 2].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 2].config(background="#FAA0A0")
+                            entries[current_index - 2].config(background="#FAA0A0",foreground="#800000")
 
                         if word[3] == req_word[3]:
-                            entries[current_index - 1].config(background="#C1E1C1")
+                            entries[current_index - 1].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[3] in req_word:
-                            entries[current_index - 1].config(background="#FFFAA0")
+                            entries[current_index - 1].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 1].config(background="#FAA0A0")
+                            entries[current_index - 1].config(background="#FAA0A0",foreground="#800000")
 
                         if word[4] == req_word[4]:
-                            entries[current_index].config(background="#C1E1C1")
+                            entries[current_index].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[4] in req_word:
-                            entries[current_index].config(background="#FFFAA0")
+                            entries[current_index].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index].config(background="#FAA0A0")
+                            entries[current_index].config(background="#FAA0A0",foreground="#800000")
 
                         framework.update_idletasks()
 
@@ -310,44 +345,46 @@ def playscreen():
 
                     else:
                         messagebox.showinfo(" ", "word not in list. try again.")
+
+                    lock_row(current_index - 4, current_index + 1)
 
                 if current_index == 14:
                     word = ''.join([entry.get() for entry in [entry11, entry12, entry13, entry14, entry15]])
                     if word in valid_words:
                         if word[0] == req_word[0]:
-                            entries[current_index - 4].config(background="#C1E1C1")
+                            entries[current_index - 4].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[0] in req_word:
-                            entries[current_index - 4].config(background="#FFFAA0")
+                            entries[current_index - 4].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 4].config(background="#FAA0A0")
+                            entries[current_index - 4].config(background="#FAA0A0",foreground="#800000")
 
                         if word[1] == req_word[1]:
-                            entries[current_index - 3].config(background="#C1E1C1")
+                            entries[current_index - 3].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[1] in req_word:
-                            entries[current_index - 3].config(background="#FFFAA0")
+                            entries[current_index - 3].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 3].config(background="#FAA0A0")
+                            entries[current_index - 3].config(background="#FAA0A0",foreground="#800000")
 
                         if word[2] == req_word[2]:
-                            entries[current_index - 2].config(background="#C1E1C1")
+                            entries[current_index - 2].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[2] in req_word:
-                            entries[current_index - 2].config(background="#FFFAA0")
+                            entries[current_index - 2].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 2].config(background="#FAA0A0")
+                            entries[current_index - 2].config(background="#FAA0A0",foreground="#800000")
 
                         if word[3] == req_word[3]:
-                            entries[current_index - 1].config(background="#C1E1C1")
+                            entries[current_index - 1].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[3] in req_word:
-                            entries[current_index - 1].config(background="#FFFAA0")
+                            entries[current_index - 1].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 1].config(background="#FAA0A0")
+                            entries[current_index - 1].config(background="#FAA0A0",foreground="#800000")
 
                         if word[4] == req_word[4]:
-                            entries[current_index].config(background="#C1E1C1")
+                            entries[current_index].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[4] in req_word:
-                            entries[current_index].config(background="#FFFAA0")
+                            entries[current_index].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index].config(background="#FAA0A0")
+                            entries[current_index].config(background="#FAA0A0",foreground="#800000")
 
                         framework.update_idletasks()
 
@@ -362,44 +399,46 @@ def playscreen():
 
                     else:
                         messagebox.showinfo(" ", "word not in list. try again.")
+
+                    lock_row(current_index - 4, current_index + 1)
 
                 if current_index == 19:
                     word = ''.join([entry.get() for entry in [entry16, entry17, entry18, entry19, entry20]])
                     if word in valid_words:
                         if word[0] == req_word[0]:
-                            entries[current_index - 4].config(background="#C1E1C1")
+                            entries[current_index - 4].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[0] in req_word:
-                            entries[current_index - 4].config(background="#FFFAA0")
+                            entries[current_index - 4].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 4].config(background="#FAA0A0")
+                            entries[current_index - 4].config(background="#FAA0A0",foreground="#800000")
 
                         if word[1] == req_word[1]:
-                            entries[current_index - 3].config(background="#C1E1C1")
+                            entries[current_index - 3].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[1] in req_word:
-                            entries[current_index - 3].config(background="#FFFAA0")
+                            entries[current_index - 3].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 3].config(background="#FAA0A0")
+                            entries[current_index - 3].config(background="#FAA0A0",foreground="#800000")
 
                         if word[2] == req_word[2]:
-                            entries[current_index - 2].config(background="#C1E1C1")
+                            entries[current_index - 2].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[2] in req_word:
-                            entries[current_index - 2].config(background="#FFFAA0")
+                            entries[current_index - 2].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 2].config(background="#FAA0A0")
+                            entries[current_index - 2].config(background="#FAA0A0",foreground="#800000")
 
                         if word[3] == req_word[3]:
-                            entries[current_index - 1].config(background="#C1E1C1")
+                            entries[current_index - 1].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[3] in req_word:
-                            entries[current_index - 1].config(background="#FFFAA0")
+                            entries[current_index - 1].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 1].config(background="#FAA0A0")
+                            entries[current_index - 1].config(background="#FAA0A0",foreground="#800000")
 
                         if word[4] == req_word[4]:
-                            entries[current_index].config(background="#C1E1C1")
+                            entries[current_index].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[4] in req_word:
-                            entries[current_index].config(background="#FFFAA0")
+                            entries[current_index].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index].config(background="#FAA0A0")
+                            entries[current_index].config(background="#FAA0A0",foreground="#800000")
 
                         framework.update_idletasks()
 
@@ -415,43 +454,45 @@ def playscreen():
                     else:
                         messagebox.showinfo(" ", "word not in list. try again.")
 
+                    lock_row(current_index - 4, current_index + 1)
+
                 if current_index == 24:
                     word = ''.join([entry.get() for entry in [entry21, entry22, entry23, entry24, entry25]])
                     if word in valid_words:
                         if word[0] == req_word[0]:
-                            entries[current_index - 4].config(background="#C1E1C1")
+                            entries[current_index - 4].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[0] in req_word:
-                            entries[current_index - 4].config(background="#FFFAA0")
+                            entries[current_index - 4].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 4].config(background="#FAA0A0")
+                            entries[current_index - 4].config(background="#FAA0A0",foreground="#800000")
 
                         if word[1] == req_word[1]:
-                            entries[current_index - 3].config(background="#C1E1C1")
+                            entries[current_index - 3].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[1] in req_word:
-                            entries[current_index - 3].config(background="#FFFAA0")
+                            entries[current_index - 3].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 3].config(background="#FAA0A0")
+                            entries[current_index - 3].config(background="#FAA0A0",foreground="#800000")
 
                         if word[2] == req_word[2]:
-                            entries[current_index - 2].config(background="#C1E1C1")
+                            entries[current_index - 2].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[2] in req_word:
-                            entries[current_index - 2].config(background="#FFFAA0")
+                            entries[current_index - 2].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 2].config(background="#FAA0A0")
+                            entries[current_index - 2].config(background="#FAA0A0",foreground="#800000")
 
                         if word[3] == req_word[3]:
-                            entries[current_index - 1].config(background="#C1E1C1")
+                            entries[current_index - 1].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[3] in req_word:
-                            entries[current_index - 1].config(background="#FFFAA0")
+                            entries[current_index - 1].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index - 1].config(background="#FAA0A0")
+                            entries[current_index - 1].config(background="#FAA0A0",foreground="#800000")
 
                         if word[4] == req_word[4]:
-                            entries[current_index].config(background="#C1E1C1")
+                            entries[current_index].config(background="#C1E1C1",foreground="#2E8B57")
                         elif word[4] in req_word:
-                            entries[current_index].config(background="#FFFAA0")
+                            entries[current_index].config(background="#FFFAA0",foreground="#2E8B57")
                         else:
-                            entries[current_index].config(background="#FAA0A0")
+                            entries[current_index].config(background="#FAA0A0",foreground="#800000")
 
                         framework.update_idletasks()
 
@@ -465,18 +506,21 @@ def playscreen():
                             frameworkm.after(500, show_message_box)
 
                         else:
-                            messagebox.showinfo(" ", "The word was " + req_word + ".")
+                            messagebox.showinfo(" ", "the word was " + req_word + ".")
+                            answer = messagebox.askyesno(" ", "play another game?")
+                            if answer:
+                                frameworkm.destroy()
+                            else:
+                                frameworkm.destroy()
 
                     else:
-                        messagebox.showinfo(" ", "word not in List. try again.")
+                        messagebox.showinfo(" ", "word not in list. try again.")
 
     def physical_key_pressed(event):
 
-        # Ignore pure modifier keys
         if event.keysym in ("Shift_L", "Shift_R", "Control_L", "Control_R", "Alt_L", "Alt_R"):
             return
 
-        # Handle Backspace (behaves like clearing current cell and moving focus left)
         if event.keysym == "BackSpace":
             focused_entry = framework.focus_get()
             if isinstance(focused_entry, Entry):
@@ -518,39 +562,39 @@ def playscreen():
 
             if word in valid_words:
                 if word[0] == req_word[0]:
-                    entries[current_index - 4].config(background="#C1E1C1")
+                    entries[current_index - 4].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[0] in req_word:
-                    entries[current_index - 4].config(background="#FFFAA0")
+                    entries[current_index - 4].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 4].config(background="#FAA0A0")
+                    entries[current_index - 4].config(background="#FAA0A0",foreground="#800000")
 
                 if word[1] == req_word[1]:
-                    entries[current_index - 3].config(background="#C1E1C1")
+                    entries[current_index - 3].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[1] in req_word:
-                    entries[current_index - 3].config(background="#FFFAA0")
+                    entries[current_index - 3].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 3].config(background="#FAA0A0")
+                    entries[current_index - 3].config(background="#FAA0A0",foreground="#800000")
 
                 if word[2] == req_word[2]:
-                    entries[current_index - 2].config(background="#C1E1C1")
+                    entries[current_index - 2].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[2] in req_word:
-                    entries[current_index - 2].config(background="#FFFAA0")
+                    entries[current_index - 2].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 2].config(background="#FAA0A0")
+                    entries[current_index - 2].config(background="#FAA0A0",foreground="#800000")
 
                 if word[3] == req_word[3]:
-                    entries[current_index - 1].config(background="#C1E1C1")
+                    entries[current_index - 1].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[3] in req_word:
-                    entries[current_index - 1].config(background="#FFFAA0")
+                    entries[current_index - 1].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 1].config(background="#FAA0A0")
+                    entries[current_index - 1].config(background="#FAA0A0",foreground="#800000")
 
                 if word[4] == req_word[4]:
-                    entries[current_index].config(background="#C1E1C1")
+                    entries[current_index].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[4] in req_word:
-                    entries[current_index].config(background="#FFFAA0")
+                    entries[current_index].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index].config(background="#FAA0A0")
+                    entries[current_index].config(background="#FAA0A0",foreground="#800000")
 
                 frameworkm.update_idletasks()
 
@@ -565,44 +609,45 @@ def playscreen():
 
             else:
                 messagebox.showinfo(" ", "word not in list. try again.")
+            lock_row(current_index - 4, current_index + 1)
 
         if current_index == 9:
             word = ''.join([entry.get() for entry in [entry6, entry7, entry8, entry9, entry10]])
             if word in valid_words:
                 if word[0] == req_word[0]:
-                    entries[current_index - 4].config(background="#C1E1C1")
+                    entries[current_index - 4].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[0] in req_word:
-                    entries[current_index - 4].config(background="#FFFAA0")
+                    entries[current_index - 4].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 4].config(background="#FAA0A0")
+                    entries[current_index - 4].config(background="#FAA0A0",foreground="#800000")
 
                 if word[1] == req_word[1]:
-                    entries[current_index - 3].config(background="#C1E1C1")
+                    entries[current_index - 3].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[1] in req_word:
-                    entries[current_index - 3].config(background="#FFFAA0")
+                    entries[current_index - 3].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 3].config(background="#FAA0A0")
+                    entries[current_index - 3].config(background="#FAA0A0",foreground="#800000")
 
                 if word[2] == req_word[2]:
-                    entries[current_index - 2].config(background="#C1E1C1")
+                    entries[current_index - 2].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[2] in req_word:
-                    entries[current_index - 2].config(background="#FFFAA0")
+                    entries[current_index - 2].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 2].config(background="#FAA0A0")
+                    entries[current_index - 2].config(background="#FAA0A0",foreground="#800000")
 
                 if word[3] == req_word[3]:
-                    entries[current_index - 1].config(background="#C1E1C1")
+                    entries[current_index - 1].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[3] in req_word:
-                    entries[current_index - 1].config(background="#FFFAA0")
+                    entries[current_index - 1].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 1].config(background="#FAA0A0")
+                    entries[current_index - 1].config(background="#FAA0A0",foreground="#800000")
 
                 if word[4] == req_word[4]:
-                    entries[current_index].config(background="#C1E1C1")
+                    entries[current_index].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[4] in req_word:
-                    entries[current_index].config(background="#FFFAA0")
+                    entries[current_index].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index].config(background="#FAA0A0")
+                    entries[current_index].config(background="#FAA0A0",foreground="#800000")
 
                 framework.update_idletasks()
 
@@ -617,44 +662,46 @@ def playscreen():
 
             else:
                 messagebox.showinfo(" ", "word not in list. try again.")
+
+            lock_row(current_index - 4, current_index + 1)
 
         if current_index == 14:
             word = ''.join([entry.get() for entry in [entry11, entry12, entry13, entry14, entry15]])
             if word in valid_words:
                 if word[0] == req_word[0]:
-                    entries[current_index - 4].config(background="#C1E1C1")
+                    entries[current_index - 4].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[0] in req_word:
-                    entries[current_index - 4].config(background="#FFFAA0")
+                    entries[current_index - 4].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 4].config(background="#FAA0A0")
+                    entries[current_index - 4].config(background="#FAA0A0",foreground="#800000")
 
                 if word[1] == req_word[1]:
-                    entries[current_index - 3].config(background="#C1E1C1")
+                    entries[current_index - 3].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[1] in req_word:
-                    entries[current_index - 3].config(background="#FFFAA0")
+                    entries[current_index - 3].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 3].config(background="#FAA0A0")
+                    entries[current_index - 3].config(background="#FAA0A0",foreground="#800000")
 
                 if word[2] == req_word[2]:
-                    entries[current_index - 2].config(background="#C1E1C1")
+                    entries[current_index - 2].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[2] in req_word:
-                    entries[current_index - 2].config(background="#FFFAA0")
+                    entries[current_index - 2].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 2].config(background="#FAA0A0")
+                    entries[current_index - 2].config(background="#FAA0A0",foreground="#800000")
 
                 if word[3] == req_word[3]:
-                    entries[current_index - 1].config(background="#C1E1C1")
+                    entries[current_index - 1].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[3] in req_word:
-                    entries[current_index - 1].config(background="#FFFAA0")
+                    entries[current_index - 1].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 1].config(background="#FAA0A0")
+                    entries[current_index - 1].config(background="#FAA0A0",foreground="#800000")
 
                 if word[4] == req_word[4]:
-                    entries[current_index].config(background="#C1E1C1")
+                    entries[current_index].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[4] in req_word:
-                    entries[current_index].config(background="#FFFAA0")
+                    entries[current_index].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index].config(background="#FAA0A0")
+                    entries[current_index].config(background="#FAA0A0",foreground="#800000")
 
                 framework.update_idletasks()
 
@@ -669,44 +716,46 @@ def playscreen():
 
             else:
                 messagebox.showinfo(" ", "word not in list. try again.")
+
+            lock_row(current_index - 4, current_index + 1)
 
         if current_index == 19:
             word = ''.join([entry.get() for entry in [entry16, entry17, entry18, entry19, entry20]])
             if word in valid_words:
                 if word[0] == req_word[0]:
-                    entries[current_index - 4].config(background="#C1E1C1")
+                    entries[current_index - 4].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[0] in req_word:
-                    entries[current_index - 4].config(background="#FFFAA0")
+                    entries[current_index - 4].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 4].config(background="#FAA0A0")
+                    entries[current_index - 4].config(background="#FAA0A0",foreground="#800000")
 
                 if word[1] == req_word[1]:
-                    entries[current_index - 3].config(background="#C1E1C1")
+                    entries[current_index - 3].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[1] in req_word:
-                    entries[current_index - 3].config(background="#FFFAA0")
+                    entries[current_index - 3].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 3].config(background="#FAA0A0")
+                    entries[current_index - 3].config(background="#FAA0A0",foreground="#800000")
 
                 if word[2] == req_word[2]:
-                    entries[current_index - 2].config(background="#C1E1C1")
+                    entries[current_index - 2].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[2] in req_word:
-                    entries[current_index - 2].config(background="#FFFAA0")
+                    entries[current_index - 2].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 2].config(background="#FAA0A0")
+                    entries[current_index - 2].config(background="#FAA0A0",foreground="#800000")
 
                 if word[3] == req_word[3]:
-                    entries[current_index - 1].config(background="#C1E1C1")
+                    entries[current_index - 1].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[3] in req_word:
-                    entries[current_index - 1].config(background="#FFFAA0")
+                    entries[current_index - 1].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 1].config(background="#FAA0A0")
+                    entries[current_index - 1].config(background="#FAA0A0",foreground="#800000")
 
                 if word[4] == req_word[4]:
-                    entries[current_index].config(background="#C1E1C1")
+                    entries[current_index].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[4] in req_word:
-                    entries[current_index].config(background="#FFFAA0")
+                    entries[current_index].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index].config(background="#FAA0A0")
+                    entries[current_index].config(background="#FAA0A0",foreground="#800000")
 
                 framework.update_idletasks()
 
@@ -722,43 +771,45 @@ def playscreen():
             else:
                 messagebox.showinfo(" ", "word not in list. try again.")
 
+            lock_row(current_index - 4, current_index + 1)
+
         if current_index == 24:
             word = ''.join([entry.get() for entry in [entry21, entry22, entry23, entry24, entry25]])
             if word in valid_words:
                 if word[0] == req_word[0]:
-                    entries[current_index - 4].config(background="#C1E1C1")
+                    entries[current_index - 4].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[0] in req_word:
-                    entries[current_index - 4].config(background="#FFFAA0")
+                    entries[current_index - 4].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 4].config(background="#FAA0A0")
+                    entries[current_index - 4].config(background="#FAA0A0",foreground="#800000")
 
                 if word[1] == req_word[1]:
-                    entries[current_index - 3].config(background="#C1E1C1")
+                    entries[current_index - 3].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[1] in req_word:
-                    entries[current_index - 3].config(background="#FFFAA0")
+                    entries[current_index - 3].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 3].config(background="#FAA0A0")
+                    entries[current_index - 3].config(background="#FAA0A0",foreground="#800000")
 
                 if word[2] == req_word[2]:
-                    entries[current_index - 2].config(background="#C1E1C1")
+                    entries[current_index - 2].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[2] in req_word:
-                    entries[current_index - 2].config(background="#FFFAA0")
+                    entries[current_index - 2].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 2].config(background="#FAA0A0")
+                    entries[current_index - 2].config(background="#FAA0A0",foreground="#800000")
 
                 if word[3] == req_word[3]:
-                    entries[current_index - 1].config(background="#C1E1C1")
+                    entries[current_index - 1].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[3] in req_word:
-                    entries[current_index - 1].config(background="#FFFAA0")
+                    entries[current_index - 1].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index - 1].config(background="#FAA0A0")
+                    entries[current_index - 1].config(background="#FAA0A0",foreground="#800000")
 
                 if word[4] == req_word[4]:
-                    entries[current_index].config(background="#C1E1C1")
+                    entries[current_index].config(background="#C1E1C1",foreground="#2E8B57")
                 elif word[4] in req_word:
-                    entries[current_index].config(background="#FFFAA0")
+                    entries[current_index].config(background="#FFFAA0",foreground="#2E8B57")
                 else:
-                    entries[current_index].config(background="#FAA0A0")
+                    entries[current_index].config(background="#FAA0A0",foreground="#800000")
 
                 framework.update_idletasks()
 
@@ -772,7 +823,12 @@ def playscreen():
                     frameworkm.after(500, show_message_box)
 
                 else:
-                    messagebox.showinfo(" ", "The word was " + req_word + ".")
+                    messagebox.showinfo(" ", "the word was " + req_word + ".")
+                    answer = messagebox.askyesno(" ", "play another game?")
+                    if answer:
+                        frameworkm.destroy()
+                    else:
+                        frameworkm.destroy()
 
             else:
                 messagebox.showinfo(" ", "word not in list. try again.")
