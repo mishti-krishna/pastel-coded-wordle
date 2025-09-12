@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import messagebox
 import random
 from datetime import date
-import tkinter.font as tkfont
 
 def center_window(window, width, height):
     screen_width = window.winfo_screenwidth()
@@ -17,37 +16,37 @@ def show_rules():
     rules.title("rules of the game")
 
     Label(rules, text="how to play:",
-          font=("andale mono", 50), fg="#6A5ACD"
+          font=("honey beauty", 80), fg="#6A5ACD"
           ).pack(fill="x", pady=20)
 
     Label(rules, text="guess the string in 5 tries.",
-          font=("galvji", 20), fg="#6A5ACD"
+          font=("CS Morcant Mono Drawn Demo", 20), fg="#6A5ACD"
           ).pack(fill="x", pady=5)
 
     Label(rules, text="1. each guess must be a valid 5-letter string.",
-          font=("galvji", 20), fg="#6A5ACD"
+          font=("CS Morcant Mono Drawn Demo", 20), fg="#6A5ACD"
           ).pack(fill="x", pady=5)
 
     Label(rules, text="2. the color of the tiles will change to show how close your guess was to the word.",
-          font=("galvji", 20), fg="#6A5ACD"
+          font=("CS Morcant Mono Drawn Demo", 20), fg="#6A5ACD"
           ).pack(fill="x", pady=5)
 
     Label(rules, text="green letters indicate that the letter is in the word and in the correct spot.",
-          font=("galvji", 20), fg="#2E8B57", bg="#C1E1C1"
+          font=("CS Morcant Mono Drawn Demo", 20), fg="#2E8B57", bg="#C1E1C1"
           ).pack(fill="x", pady=5, anchor="center")
 
     Label(rules, text="yellow letters indicate that the letter is in the word but in the wrong spot.",
-          font=("galvji", 20), fg="#2E8B57", bg="#FFFAA0"
+          font=("CS Morcant Mono Drawn Demo", 20), fg="#2E8B57", bg="#FFFAA0"
           ).pack(fill="x", pady=5, anchor="center")
 
     Label(rules, text="red letters indicate that the letter is not in the word in any spot.",
-          font=("galvji", 20), fg="#800000", bg="#FAA0A0"
+          font=("CS Morcant Mono Drawn Demo", 20), fg="#800000", bg="#FAA0A0"
           ).pack(fill="x", pady=5, anchor="center")
 
-    ok_button = Button(rules, text="OK", command=lambda: [rules.destroy(), playscreen()], font=("galvji", 20))
+    ok_button = Button(rules, text="OK", command=lambda: [rules.destroy(), playscreen()], font=("CS Morcant Mono Drawn Demo", 20))
     ok_button.pack(pady=30)
 
-    center_window(rules, 850, 450)
+    center_window(rules, 1000, 450)
 
 def playscreen():
     fh = open("validwords.txt", 'r')
@@ -80,110 +79,110 @@ def playscreen():
     framework = Frame(frameworkm)
     framework.place(relx=0.5, rely=0.5, anchor="center")
 
-    Label(framework, text="segfaultle", font=("andale mono", 50)).grid(row=0, columnspan=10)
+    Label(framework, text="segfaultle", font=("honey beauty", 80)).grid(row=0, columnspan=10)
 
     entry1 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                   font=("galvji", 25))
+                   font=("CS Morcant Mono Drawn Demo", 25))
     entry1.grid(row=1, column=0, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry2 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                   font=("galvji", 25))
+                   font=("CS Morcant Mono Drawn Demo", 25))
     entry2.grid(row=1, column=1, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry3 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                   font=("galvji", 25))
+                   font=("CS Morcant Mono Drawn Demo", 25))
     entry3.grid(row=1, column=2, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry4 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                   font=("galvji", 25))
+                   font=("CS Morcant Mono Drawn Demo", 25))
     entry4.grid(row=1, column=3, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry5 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                   font=("galvji", 25))
+                   font=("CS Morcant Mono Drawn Demo", 25))
     entry5.grid(row=1, column=4, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry6 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                   font=("galvji", 25))
+                   font=("CS Morcant Mono Drawn Demo", 25))
     entry6.grid(row=2, column=0, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry7 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                   font=("galvji", 25))
+                   font=("CS Morcant Mono Drawn Demo", 25))
     entry7.grid(row=2, column=1, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry8 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                   font=("galvji", 25))
+                   font=("CS Morcant Mono Drawn Demo", 25))
     entry8.grid(row=2, column=2, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry9 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                   font=("galvji", 25))
+                   font=("CS Morcant Mono Drawn Demo", 25))
     entry9.grid(row=2, column=3, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry10 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry10.grid(row=2, column=4, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry11 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry11.grid(row=3, column=0, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry12 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry12.grid(row=3, column=1, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry13 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry13.grid(row=3, column=2, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry14 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry14.grid(row=3, column=3, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry15 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry15.grid(row=3, column=4, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry16 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry16.grid(row=4, column=0, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry17 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry17.grid(row=4, column=1, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry18 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry18.grid(row=4, column=2, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry19 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry19.grid(row=4, column=3, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry20 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry20.grid(row=4, column=4, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry21 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry21.grid(row=5, column=0, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry22 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry22.grid(row=5, column=1, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry23 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry23.grid(row=5, column=2, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry24 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry24.grid(row=5, column=3, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry25 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
     entry25.grid(row=5, column=4, padx=4, pady=4, ipadx=24, ipady=24)
 
     entry26 = Entry(framework, width=3, justify="center", validate="key", validatecommand=vcmd, foreground="#6A5ACD",
-                    font=("galvji", 25))
+                    font=("CS Morcant Mono Drawn Demo", 25))
 
     entries = [
         entry1, entry2, entry3, entry4, entry5,
@@ -838,111 +837,111 @@ def playscreen():
     framework.bind_all("<KeyPress>", physical_key_pressed)
 
     canvas.create_rectangle(50, 30, 100, 80, fill="white", outline="black")
-    key1 = canvas.create_text(75, 55, text="q", font=("galvji", 20), fill="black")
+    key1 = canvas.create_text(75, 55, text="q", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key1, "<Button-1>", lambda event: clicked(event, "q"))
 
     canvas.create_rectangle(100, 30, 150, 80, fill="white", outline="black")
-    key2 = canvas.create_text(125, 55, text="w", font=("galvji", 20), fill="black")
+    key2 = canvas.create_text(125, 55, text="w", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key2, "<Button-1>", lambda event: clicked(event, "w"))
 
     canvas.create_rectangle(150, 30, 200, 80, fill="white", outline="black")
-    key3 = canvas.create_text(175, 55, text="e", font=("galvji", 20), fill="black")
+    key3 = canvas.create_text(175, 55, text="e", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key3, "<Button-1>", lambda event: clicked(event, "e"))
 
     canvas.create_rectangle(200, 30, 250, 80, fill="white", outline="black")
-    key4 = canvas.create_text(225, 55, text="r", font=("galvji", 20), fill="black")
+    key4 = canvas.create_text(225, 55, text="r", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key4, "<Button-1>", lambda event: clicked(event, "r"))
 
     canvas.create_rectangle(250, 30, 300, 80, fill="white", outline="black")
-    key5 = canvas.create_text(275, 55, text="t", font=("galvji", 20), fill="black")
+    key5 = canvas.create_text(275, 55, text="t", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key5, "<Button-1>", lambda event: clicked(event, "t"))
 
     canvas.create_rectangle(300, 30, 350, 80, fill="white", outline="black")
-    key6 = canvas.create_text(325, 55, text="y", font=("galvji", 20), fill="black")
+    key6 = canvas.create_text(325, 55, text="y", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key6, "<Button-1>", lambda event: clicked(event, "y"))
 
     canvas.create_rectangle(350, 30, 400, 80, fill="white", outline="black")
-    key7 = canvas.create_text(375, 55, text="u", font=("galvji", 20), fill="black")
+    key7 = canvas.create_text(375, 55, text="u", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key7, "<Button-1>", lambda event: clicked(event, "u"))
 
     canvas.create_rectangle(400, 30, 450, 80, fill="white", outline="black")
-    key8 = canvas.create_text(425, 55, text="i", font=("galvji", 20), fill="black")
+    key8 = canvas.create_text(425, 55, text="i", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key8, "<Button-1>", lambda event: clicked(event, "i"))
 
     canvas.create_rectangle(450, 30, 500, 80, fill="white", outline="black")
-    key9 = canvas.create_text(475, 55, text="o", font=("galvji", 20), fill="black")
+    key9 = canvas.create_text(475, 55, text="o", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key9, "<Button-1>", lambda event: clicked(event, "o"))
 
     canvas.create_rectangle(500, 30, 550, 80, fill="white", outline="black")
-    key10 = canvas.create_text(525, 55, text="p", font=("galvji", 20), fill="black")
+    key10 = canvas.create_text(525, 55, text="p", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key10, "<Button-1>", lambda event: clicked(event, "p"))
 
     canvas.create_rectangle(70, 90, 120, 140, fill="white", outline="black")
-    key11 = canvas.create_text(95, 115, text="a", font=("galvji", 20), fill="black")
+    key11 = canvas.create_text(95, 115, text="a", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key11, "<Button-1>", lambda event: clicked(event, "a"))
 
     canvas.create_rectangle(120, 90, 170, 140, fill="white", outline="black")
-    key12 = canvas.create_text(145, 115, text="s", font=("galvji", 20), fill="black")
+    key12 = canvas.create_text(145, 115, text="s", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key12, "<Button-1>", lambda event: clicked(event, "s"))
 
     canvas.create_rectangle(170, 90, 220, 140, fill="white", outline="black")
-    key13 = canvas.create_text(195, 115, text="d", font=("galvji", 20), fill="black")
+    key13 = canvas.create_text(195, 115, text="d", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key13, "<Button-1>", lambda event: clicked(event, "d"))
 
     canvas.create_rectangle(220, 90, 270, 140, fill="white", outline="black")
-    key14 = canvas.create_text(245, 115, text="f", font=("galvji", 20), fill="black")
+    key14 = canvas.create_text(245, 115, text="f", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key14, "<Button-1>", lambda event: clicked(event, "f"))
 
     canvas.create_rectangle(270, 90, 320, 140, fill="white", outline="black")
-    key15 = canvas.create_text(295, 115, text="g", font=("galvji", 20), fill="black")
+    key15 = canvas.create_text(295, 115, text="g", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key15, "<Button-1>", lambda event: clicked(event, "g"))
 
     canvas.create_rectangle(320, 90, 370, 140, fill="white", outline="black")
-    key16 = canvas.create_text(345, 115, text="h", font=("galvji", 20), fill="black")
+    key16 = canvas.create_text(345, 115, text="h", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key16, "<Button-1>", lambda event: clicked(event, "h"))
 
     canvas.create_rectangle(370, 90, 420, 140, fill="white", outline="black")
-    key17 = canvas.create_text(395, 115, text="j", font=("galvji", 20), fill="black")
+    key17 = canvas.create_text(395, 115, text="j", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key17, "<Button-1>", lambda event: clicked(event, "j"))
 
     canvas.create_rectangle(420, 90, 470, 140, fill="white", outline="black")
-    key18 = canvas.create_text(445, 115, text="k", font=("galvji", 20), fill="black")
+    key18 = canvas.create_text(445, 115, text="k", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key18, "<Button-1>", lambda event: clicked(event, "k"))
 
     canvas.create_rectangle(470, 90, 520, 140, fill="white", outline="black")
-    key19 = canvas.create_text(495, 115, text="l", font=("galvji", 20), fill="black")
+    key19 = canvas.create_text(495, 115, text="l", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key19, "<Button-1>", lambda event: clicked(event, "l"))
 
     canvas.create_rectangle(90, 150, 140, 200, fill="white", outline="black")
-    key20 = canvas.create_text(115, 175, text="z", font=("galvji", 20), fill="black")
+    key20 = canvas.create_text(115, 175, text="z", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key20, "<Button-1>", lambda event: clicked(event, "z"))
 
     canvas.create_rectangle(140, 150, 190, 200, fill="white", outline="black")
-    key21 = canvas.create_text(165, 175, text="x", font=("galvji", 20), fill="black")
+    key21 = canvas.create_text(165, 175, text="x", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key21, "<Button-1>", lambda event: clicked(event, "x"))
 
     canvas.create_rectangle(190, 150, 240, 200, fill="white", outline="black")
-    key22 = canvas.create_text(215, 175, text="c", font=("galvji", 20), fill="black")
+    key22 = canvas.create_text(215, 175, text="c", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key22, "<Button-1>", lambda event: clicked(event, "c"))
 
     canvas.create_rectangle(240, 150, 290, 200, fill="white", outline="black")
-    key23 = canvas.create_text(265, 175, text="v", font=("galvji", 20), fill="black")
+    key23 = canvas.create_text(265, 175, text="v", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key23, "<Button-1>", lambda event: clicked(event, "v"))
 
     canvas.create_rectangle(290, 150, 340, 200, fill="white", outline="black")
-    key24 = canvas.create_text(315, 175, text="b", font=("galvji", 20), fill="black")
+    key24 = canvas.create_text(315, 175, text="b", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key24, "<Button-1>", lambda event: clicked(event, "b"))
 
     canvas.create_rectangle(340, 150, 390, 200, fill="white", outline="black")
-    key25 = canvas.create_text(365, 175, text="n", font=("galvji", 20), fill="black")
+    key25 = canvas.create_text(365, 175, text="n", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key25, "<Button-1>", lambda event: clicked(event, "n"))
 
     canvas.create_rectangle(390, 150, 440, 200, fill="white", outline="black")
-    key26 = canvas.create_text(415, 175, text="m", font=("galvji", 20), fill="black")
+    key26 = canvas.create_text(415, 175, text="m", font=("CS Morcant Mono Drawn Demo", 20), fill="black")
     canvas.tag_bind(key26, "<Button-1>", lambda event: clicked(event, "m"))
 
     canvas.create_rectangle(440, 150, 490, 200, fill="white", outline="black")
-    key27 = canvas.create_text(465, 175, text="close ", font=("galvji", 12), fill="black")
+    key27 = canvas.create_text(465, 175, text="close ", font=("CS Morcant Mono Drawn Demo", 12), fill="black")
     canvas.tag_bind(key27, "<Button-1>", lambda event: frameworkm.destroy())
 
     center_window(frameworkm, 800, 900)
@@ -951,15 +950,14 @@ root=Tk()
 
 root.title("segfaultle main game")
 
-Label(root, text="segfaultle", font=("andale mono",50)).pack()
-Label(root, text="get 5 chances to guess a 5-letter string,",font= ("galvji",15)).pack()
-Label(root, text="but now the cloud whispers your fate!",font= ("galvji",15)).pack()
-Label(root, text=date.today().strftime("%B %d, %Y"),font=("galvji",15)).pack()
+Label(root, text="segfaultle", font=("honey beauty",100)).pack()
+Label(root, text="get 5 chances to guess a 5-letter string,",font= ("honey beauty",40)).pack()
+Label(root, text="but now the cloud whispers your fate!",font= ("honey beauty",40)).pack()
+Label(root, text=date.today().strftime("%B %d, %Y").lower(),font=("honey beauty",30)).pack()
 
-Button(root, text = "play", font= ("andale mono", 15),command=show_rules).pack()
-Button(root, text = "close", font= ("andale mono", 15), command = root.destroy).pack()
+Button(root, text = "play", font= ("CS Morcant Mono Drawn Demo", 15),command=show_rules).pack()
+Button(root, text = "close", font= ("CS Morcant Mono Drawn Demo", 15), command = root.destroy).pack()
 
-center_window(root, 425, 230)
+center_window(root, 600, 350)
 
 root.mainloop()
-
