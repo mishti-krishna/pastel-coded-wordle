@@ -785,14 +785,17 @@ def playscreen():
 
                         if all_green:
                             frameworkm.after(500, show_message_box)
+                            return "break"
 
+                else:
+                        messagebox.showinfo(" ", "word not in list.")
+
+                        messagebox.showinfo(" ", "the word was " + req_word + ".")
+                        answer = messagebox.askyesno(" ", "play another game?")
+                        if answer:
+                            frameworkm.destroy()
                         else:
-                            messagebox.showinfo(" ", "the word was " + req_word + ".")
-                            answer = messagebox.askyesno(" ", "play another game?")
-                            if answer:
-                                frameworkm.destroy()
-                            else:
-                                frameworkm.destroy()
+                            frameworkm.destroy()
 
     def physical_key_pressed(event):
 
@@ -832,6 +835,7 @@ def playscreen():
             entries[current_index + 1].focus_set()
 
             if current_index == 4:
+                global req_word
                 req_word = random.choice(targets).lower()
                 print(req_word)
                 word = ''.join([entry.get() for entry in [entry1, entry2, entry3, entry4, entry5]])
@@ -1240,16 +1244,17 @@ def playscreen():
 
                     if all_green:
                         frameworkm.after(500, show_message_box)
+                        return "break"
 
-                    else:
-                        messagebox.showinfo(" ", "the word was " + req_word + ".")
-                        answer = messagebox.askyesno(" ", "play another game?")
-                        if answer:
-                            frameworkm.destroy()
-                        else:
-                            frameworkm.destroy()
+            else:
+                messagebox.showinfo(" ", "word not in list.")
 
-        return "break"
+                messagebox.showinfo(" ", "the word was " + req_word + ".")
+                answer = messagebox.askyesno(" ", "play another game?")
+                if answer:
+                    frameworkm.destroy()
+                else:
+                    frameworkm.destroy()
 
     framework.bind_all("<KeyPress>", physical_key_pressed)
 
