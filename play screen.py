@@ -64,6 +64,10 @@ def playscreen():
     frameworkm.title("play")
     frameworkm.configure(bg="#A7C7E7")
 
+    global req_word
+    req_word = random.choice(targets).lower()
+    print(req_word)
+
     def validate(alpha):
         if len(alpha) == 0:
             return True
@@ -376,12 +380,7 @@ def playscreen():
             if current_index < len(entries) - 1:
                 entries[current_index + 1].focus()
 
-                global req_word
-
                 if current_index == 4:
-                    global req_word
-                    req_word = random.choice(targets).lower()
-                    print(req_word)
                     word = ''.join([entry.get() for entry in [entry1, entry2, entry3, entry4, entry5]])
 
                     if word in valid_words:
@@ -785,11 +784,17 @@ def playscreen():
 
                         if all_green:
                             frameworkm.after(500, show_message_box)
-                            return "break"
+                        else:
+                            messagebox.showinfo(" ", "the word was " + req_word + ".")
+                            answer = messagebox.askyesno(" ", "play another game?")
+                            if answer:
+                                frameworkm.destroy()
+                            else:
+                                frameworkm.destroy()
 
-                else:
+                    else:
+                        # Handle invalid word
                         messagebox.showinfo(" ", "word not in list.")
-
                         messagebox.showinfo(" ", "the word was " + req_word + ".")
                         answer = messagebox.askyesno(" ", "play another game?")
                         if answer:
@@ -835,9 +840,6 @@ def playscreen():
             entries[current_index + 1].focus_set()
 
             if current_index == 4:
-                global req_word
-                req_word = random.choice(targets).lower()
-                print(req_word)
                 word = ''.join([entry.get() for entry in [entry1, entry2, entry3, entry4, entry5]])
 
                 if word in valid_words:
@@ -1171,84 +1173,86 @@ def playscreen():
             if word in valid_words:
                 letter_counts = Counter(req_word)
 
-                if word in valid_words:
-                    letter_counts = Counter(req_word)
+                if word[0] == req_word[0]:
+                    entries[current_index - 4].config(background="#A8E6CF", foreground="#004D40")
+                    letter_counts[word[0]] -= 1
+                    update_key(word[0], "#A8E6CF")
+                elif word[0] in req_word and letter_counts[word[0]] > 0:
+                    entries[current_index - 4].config(background="#FFF5A5", foreground="#004D40")
+                    letter_counts[word[0]] -= 1
+                    update_key(word[0], "#FFF5A5")
+                else:
+                    entries[current_index - 4].config(background="#FFD6E0", foreground="#AD1457")
+                    update_key(word[0], "#FFD6E0")
 
-                    if word[0] == req_word[0]:
-                        entries[current_index - 4].config(background="#A8E6CF", foreground="#004D40")
-                        letter_counts[word[0]] -= 1
-                        update_key(word[0], "#A8E6CF")
-                    elif word[0] in req_word and letter_counts[word[0]] > 0:
-                        entries[current_index - 4].config(background="#FFF5A5", foreground="#004D40")
-                        letter_counts[word[0]] -= 1
-                        update_key(word[0], "#FFF5A5")
+                if word[1] == req_word[1]:
+                    entries[current_index - 3].config(background="#A8E6CF", foreground="#004D40")
+                    letter_counts[word[1]] -= 1
+                    update_key(word[1], "#A8E6CF")
+                elif word[1] in req_word and letter_counts[word[1]] > 0:
+                    entries[current_index - 3].config(background="#FFF5A5", foreground="#004D40")
+                    letter_counts[word[1]] -= 1
+                    update_key(word[1], "#FFF5A5")
+                else:
+                    entries[current_index - 3].config(background="#FFD6E0", foreground="#AD1457")
+                    update_key(word[1], "#FFD6E0")
+
+                if word[2] == req_word[2]:
+                    entries[current_index - 2].config(background="#A8E6CF", foreground="#004D40")
+                    letter_counts[word[2]] -= 1
+                    update_key(word[2], "#A8E6CF")
+                elif word[2] in req_word and letter_counts[word[2]] > 0:
+                    entries[current_index - 2].config(background="#FFF5A5", foreground="#004D40")
+                    letter_counts[word[2]] -= 1
+                    update_key(word[2], "#FFF5A5")
+                else:
+                    entries[current_index - 2].config(background="#FFD6E0", foreground="#AD1457")
+                    update_key(word[2], "#FFD6E0")
+
+                if word[3] == req_word[3]:
+                    entries[current_index - 1].config(background="#A8E6CF", foreground="#004D40")
+                    letter_counts[word[3]] -= 1
+                    update_key(word[3], "#A8E6CF")
+                elif word[3] in req_word and letter_counts[word[3]] > 0:
+                    entries[current_index - 1].config(background="#FFF5A5", foreground="#004D40")
+                    letter_counts[word[3]] -= 1
+                    update_key(word[3], "#FFF5A5")
+                else:
+                    entries[current_index - 1].config(background="#FFD6E0", foreground="#AD1457")
+                    update_key(word[3], "#FFD6E0")
+
+                if word[4] == req_word[4]:
+                    entries[current_index].config(background="#A8E6CF", foreground="#004D40")
+                    letter_counts[word[4]] -= 1
+                    update_key(word[4], "#A8E6CF")
+                elif word[4] in req_word and letter_counts[word[4]] > 0:
+                    entries[current_index].config(background="#FFF5A5", foreground="#004D40")
+                    letter_counts[word[4]] -= 1
+                    update_key(word[4], "#FFF5A5")
+                else:
+                    entries[current_index].config(background="#FFD6E0", foreground="#AD1457")
+                    update_key(word[4], "#FFD6E0")
+
+                frameworkm.update_idletasks()
+
+                all_green = (entries[current_index - 4].cget('background') == "#A8E6CF" and
+                             entries[current_index - 3].cget('background') == "#A8E6CF" and
+                             entries[current_index - 2].cget('background') == "#A8E6CF" and
+                             entries[current_index - 1].cget('background') == "#A8E6CF" and
+                             entries[current_index].cget('background') == "#A8E6CF")
+
+                if all_green:
+                    frameworkm.after(500, show_message_box)
+                else:
+                    messagebox.showinfo(" ", "the word was " + req_word + ".")
+                    answer = messagebox.askyesno(" ", "play another game?")
+                    if answer:
+                        frameworkm.destroy()
                     else:
-                        entries[current_index - 4].config(background="#FFD6E0", foreground="#AD1457")
-                        update_key(word[0], "#FFD6E0")
-
-                    if word[1] == req_word[1]:
-                        entries[current_index - 3].config(background="#A8E6CF", foreground="#004D40")
-                        letter_counts[word[1]] -= 1
-                        update_key(word[1], "#A8E6CF")
-                    elif word[1] in req_word and letter_counts[word[1]] > 0:
-                        entries[current_index - 3].config(background="#FFF5A5", foreground="#004D40")
-                        letter_counts[word[1]] -= 1
-                        update_key(word[1], "#FFF5A5")
-                    else:
-                        entries[current_index - 3].config(background="#FFD6E0", foreground="#AD1457")
-                        update_key(word[1], "#FFD6E0")
-
-                    if word[2] == req_word[2]:
-                        entries[current_index - 2].config(background="#A8E6CF", foreground="#004D40")
-                        letter_counts[word[2]] -= 1
-                        update_key(word[2], "#A8E6CF")
-                    elif word[2] in req_word and letter_counts[word[2]] > 0:
-                        entries[current_index - 2].config(background="#FFF5A5", foreground="#004D40")
-                        letter_counts[word[2]] -= 1
-                        update_key(word[2], "#FFF5A5")
-                    else:
-                        entries[current_index - 2].config(background="#FFD6E0", foreground="#AD1457")
-                        update_key(word[2], "#FFD6E0")
-
-                    if word[3] == req_word[3]:
-                        entries[current_index - 1].config(background="#A8E6CF", foreground="#004D40")
-                        letter_counts[word[3]] -= 1
-                        update_key(word[3], "#A8E6CF")
-                    elif word[3] in req_word and letter_counts[word[3]] > 0:
-                        entries[current_index - 1].config(background="#FFF5A5", foreground="#004D40")
-                        letter_counts[word[3]] -= 1
-                        update_key(word[3], "#FFF5A5")
-                    else:
-                        entries[current_index - 1].config(background="#FFD6E0", foreground="#AD1457")
-                        update_key(word[3], "#FFD6E0")
-
-                    if word[4] == req_word[4]:
-                        entries[current_index].config(background="#A8E6CF", foreground="#004D40")
-                        letter_counts[word[4]] -= 1
-                        update_key(word[4], "#A8E6CF")
-                    elif word[4] in req_word and letter_counts[word[4]] > 0:
-                        entries[current_index].config(background="#FFF5A5", foreground="#004D40")
-                        letter_counts[word[4]] -= 1
-                        update_key(word[4], "#FFF5A5")
-                    else:
-                        entries[current_index].config(background="#FFD6E0", foreground="#AD1457")
-                        update_key(word[4], "#FFD6E0")
-
-                    frameworkm.update_idletasks()
-
-                    all_green = (entries[current_index - 4].cget('background') == "#A8E6CF" and
-                                 entries[current_index - 3].cget('background') == "#A8E6CF" and
-                                 entries[current_index - 2].cget('background') == "#A8E6CF" and
-                                 entries[current_index - 1].cget('background') == "#A8E6CF" and
-                                 entries[current_index].cget('background') == "#A8E6CF")
-
-                    if all_green:
-                        frameworkm.after(500, show_message_box)
-                        return "break"
+                        frameworkm.destroy()
 
             else:
                 messagebox.showinfo(" ", "word not in list.")
-
                 messagebox.showinfo(" ", "the word was " + req_word + ".")
                 answer = messagebox.askyesno(" ", "play another game?")
                 if answer:
