@@ -19,16 +19,16 @@ def show_rules():
     rules.configure(bg="#A7C7E7")
 
     Label(rules, text="how to play:",
-          font=("honey beauty", 80), fg="#6A5ACD", bg="#A7C7E7").pack(fill="x", pady=20)
+          font=("honey beauty", 80), fg="#444444", bg="#A7C7E7").pack(fill="x", pady=20)
 
     Label(rules, text="guess the string in 5 tries.",
-          font=("monospace", 20,"bold"), fg="#6A5ACD", bg="#A7C7E7").pack(fill="x", pady=5)
+          font=("monospace", 20,"bold"), fg="#444444", bg="#A7C7E7").pack(fill="x", pady=5)
 
     Label(rules, text="1. each guess must be a valid 5-letter string.",
-          font=("monospace", 20,"bold"), fg="#6A5ACD",bg="#A7C7E7" ).pack(fill="x", pady=5)
+          font=("monospace", 20,"bold"), fg="#444444",bg="#A7C7E7" ).pack(fill="x", pady=5)
 
     Label(rules, text="2. the color of the tiles will change to show how close your guess was to the word.",
-          font=("monospace", 20,"bold"), fg="#6A5ACD", bg="#A7C7E7").pack(fill="x", pady=5)
+          font=("monospace", 20,"bold"), fg="#444444", bg="#A7C7E7").pack(fill="x", pady=5)
 
     Label(rules, text="green letters indicate that the letter is in the word and in the correct spot.",
           font=("monospace", 20,"bold"), fg="#004D40", bg="#A8E6CF"
@@ -42,7 +42,7 @@ def show_rules():
           font=("monospace", 20,"bold"), fg="#AD1457", bg="#FFD6E0"
           ).pack(fill="x", pady=5, anchor="center")
 
-    ok_button = Button(rules, text="OK", command=lambda: [rules.destroy(), playscreen(),], font=("monospace", 20,"bold"),highlightbackground="#CDB4DB")
+    ok_button = Button(rules, text="ok", command=lambda: [rules.destroy(), playscreen(),], font=("monospace", 20,"bold"),highlightbackground="#CDB4DB")
     ok_button.pack(pady=30)
 
     center_window(rules, 1020, 470)
