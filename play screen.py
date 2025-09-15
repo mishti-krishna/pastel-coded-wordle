@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import messagebox
 import random
 from datetime import date
-from tkinter import font
 from collections import Counter
 
 def center_window(window, width, height):
